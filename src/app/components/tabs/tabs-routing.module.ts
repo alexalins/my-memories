@@ -8,45 +8,45 @@ const routes: Routes = [
     component: TabsPage,
     children: [
       {
-        path: 'tab1',
+        path: 'photo',
         children: [
           {
             path: '',
             loadChildren: () =>
-              import('../tab1/tab1.module').then(m => m.Tab1PageModule)
+              import("../../pages/photo/photo.module").then(m => m.PhotoPageModule)
           }
         ]
       },
       {
-        path: 'tab2',
+        path: 'message',
         children: [
           {
             path: '',
             loadChildren: () =>
-              import('../tab2/tab2.module').then(m => m.Tab2PageModule)
+              import('../../pages/message/message.module').then(m => m.MessagePageModule)
           }
         ]
       },
       {
-        path: 'tab3',
+        path: 'user',
         children: [
           {
             path: '',
             loadChildren: () =>
-              import('../tab3/tab3.module').then(m => m.Tab3PageModule)
+              import('../../pages/user/user.module').then(m => m.UserPageModule)
           }
         ]
       },
       {
         path: '',
-        redirectTo: '/tabs/tab1',
+        redirectTo: '/tabs/home',
         pathMatch: 'full'
       }
     ]
   },
   {
     path: '',
-    redirectTo: '/tabs/tab1',
+    redirectTo: '/tabs/home',
     pathMatch: 'full'
   }
 ];
