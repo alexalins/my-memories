@@ -8,6 +8,7 @@ import { MessagePageRoutingModule } from './message-routing.module';
 
 import { MessagePage } from './message.page';
 import { HeaderModule } from 'src/app/components/header/header.module';
+import { CardMessageModule } from 'src/app/components/card-message/card-message.module';
 
 @NgModule({
   imports: [
@@ -16,7 +17,8 @@ import { HeaderModule } from 'src/app/components/header/header.module';
     IonicModule,
     MessagePageRoutingModule,
     //
-    HeaderModule
+    HeaderModule,
+    CardMessageModule
   ],
   declarations: [MessagePage]
 })

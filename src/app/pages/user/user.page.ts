@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./user.page.scss'],
 })
 export class UserPage implements OnInit {
+  
+  urlAvatar: string = "https://66.media.tumblr.com/avatar_4f38df4a83b6_128.pnj";
 
   constructor() { }
 
