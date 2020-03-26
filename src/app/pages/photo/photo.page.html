@@ -1,5 +1,9 @@
 <header title="Fotos"></header>
 
 <ion-content>
-
+    <ion-list *ngFor="let item of list">
+        <ion-item>
+            <app-card-photo></app-card-photo>
+        </ion-item>
+    </ion-list>
 </ion-content>
