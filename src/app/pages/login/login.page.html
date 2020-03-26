@@ -1,9 +1,16 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>login</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
-
+  <ion-img [src]="img"></ion-img>
+  <form style="margin-top: 15%;">
+    <ion-item>
+      <ion-label>Login</ion-label>
+      <ion-input name="username"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Senha</ion-label>
+      <ion-input type="password" name="password"></ion-input>
+    </ion-item>
+    <div class="ion-text-center" style="margin-top: 15%;">
+      <ion-button type="submit" color="primary">Iniciar Sessão</ion-button>
+    </div>
+  </form>
 </ion-content>
