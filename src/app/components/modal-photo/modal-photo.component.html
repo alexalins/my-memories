@@ -1,3 +1,15 @@
-<p>
-  modal-photo works!
-</p>
+<ion-header translucent>
+  <ion-toolbar>
+    <ion-title>Detalhe</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismissModal()">Fechar</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content fullscreen>
+  <app-card-photo></app-card-photo>
+
+  <ion-button expand="block" class="button" color="tertiary">Baixar foto</ion-button>
+  <ion-button expand="block" class="buttonApagar" color="danger">Apagar</ion-button>
+
+</ion-content>

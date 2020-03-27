@@ -9,6 +9,7 @@ import { PhotoPageRoutingModule } from './photo-routing.module';
 import { PhotoPage } from './photo.page';
 import { HeaderModule } from 'src/app/components/header/header.module';
 import { CardPhotoModule } from 'src/app/components/card-photo/card-photo.module';
+import { ModalPhotoComponent } from 'src/app/components/modal-photo/modal-photo.component';
 
 @NgModule({
   imports: [
@@ -18,8 +19,9 @@ import { CardPhotoModule } from 'src/app/components/card-photo/card-photo.module
     PhotoPageRoutingModule,
     //
     HeaderModule,
-    CardPhotoModule
+    CardPhotoModule,
   ],
-  declarations: [PhotoPage]
+  declarations: [PhotoPage, ModalPhotoComponent],
+  entryComponents: [ModalPhotoComponent]
 })
 export class PhotoPageModule {}
