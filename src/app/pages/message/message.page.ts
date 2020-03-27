@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ModalPhotoComponent } from 'src/app/components/modal-photo/modal-photo.component';
 import { ModalController, AlertController } from '@ionic/angular';
 import { ModalViewMessageComponent } from 'src/app/components/modal-view-message/modal-view-message.component';
+import { ModalSendMessageComponent } from 'src/app/components/modal-send-message/modal-send-message.component';
 
 @Component({
   selector: 'app-message',
@@ -27,34 +28,10 @@ export class MessagePage implements OnInit {
     return await modal.present();
   }
 
-  async alertSendMessage() {
-    const alert = await this.alertController.create({
-      header: 'Escreva sua mensagem',
-      cssClass: 'modal',
-      inputs: [
-        {
-          name: 'Mensagem',
-          type: 'textarea',
-          placeholder: 'Eu te amo <3'
-        }
-      ],
-      buttons: [
-        {
-          text: 'Cancelar',
-          role: 'cancel',
-          cssClass: 'modal',
-          handler: () => {
-            console.log('Confirm Cancel');
-          }
-        }, {
-          text: 'Enviar',
-          handler: () => {
-            console.log('Confirm Ok');
-          }
-        }
-      ],
+  async modalNew() {
+    const modal = await this.modalController.create({
+      component: ModalSendMessageComponent
     });
-
-    await alert.present();
+    return await modal.present();
   }
 }

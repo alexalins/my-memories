@@ -10,8 +10,23 @@
       <ion-input type="password" name="password"></ion-input>
     </ion-item>
     <div class="ion-text-center" style="margin-top: 15%;">
-      <ion-button expand="block" class="button" color="tertiary tint" [routerLink]="['/tabs/photo']">Iniciar Sessão</ion-button>
-      <ion-button expand="block" class="button" color="tertiary" fill="outline" (click)="alertPassword()">Esqueci minha senha</ion-button>
+      <ion-button expand="block" class="button" color="tertiary tint" [routerLink]="['/tabs/photo']">
+        <ion-row>
+          <ion-col width-90>Iniciar Sessão</ion-col>
+          <ion-col width-10>
+            <ion-icon name="log-in-outline"></ion-icon>
+          </ion-col>
+        </ion-row>
+      </ion-button>
+      <ion-button expand="block" class="button" color="tertiary" fill="outline" (click)="alertPassword()">
+        <ion-row>
+          <ion-col width-90>Esqueci minha senha
+          </ion-col>
+          <ion-col width-10>
+            <ion-icon name="key-outline"></ion-icon>
+          </ion-col>
+        </ion-row>
+      </ion-button>
     </div>
   </form>
 </ion-content>

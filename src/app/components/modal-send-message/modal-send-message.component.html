@@ -1,0 +1,23 @@
+<ion-header translucent>
+  <ion-toolbar>
+    <ion-title>Nova Mensagem</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismissModal()"><ion-icon name="close-outline"></ion-icon></ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content fullscreen>
+  <ion-item>
+    <ion-label position="stacked">Mensagem</ion-label>
+    <ion-textarea rows="10"></ion-textarea>
+  </ion-item>
+
+  <ion-button expand="block" class="button" color="primary">
+    <ion-row>
+      <ion-col width-90>Enviar</ion-col>
+      <ion-col width-10>
+        <ion-icon name="send-outline"></ion-icon>
+      </ion-col>
+    </ion-row>
+  </ion-button>
+</ion-content>
