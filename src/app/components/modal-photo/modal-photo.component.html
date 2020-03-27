@@ -9,7 +9,7 @@
 <ion-content fullscreen>
   <app-card-photo></app-card-photo>
 
-  <ion-button expand="block" class="button" color="tertiary">Baixar foto</ion-button>
-  <ion-button expand="block" class="buttonApagar" color="danger">Apagar</ion-button>
+  <ion-button expand="block" class="button" color="tertiary" (click)="alertConfirmDonwload()">Baixar foto</ion-button>
+  <ion-button expand="block" class="buttonApagar" color="danger" (click)="alertConfirmDelete()">Apagar</ion-button>
 
 </ion-content>
