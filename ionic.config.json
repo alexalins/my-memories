@@ -1,5 +1,7 @@
 {
   "name": "axm",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

@@ -7,10 +7,10 @@
         </ion-avatar>
         <ion-label>
             <h2>Alexa</h2>
-            <p>alexa.glinsoo@gmail</p>
+            <p>alexa.glinsoo@gmail.com</p>
         </ion-label>
     </ion-item>
-    <ion-button expand="block" class="button" color="tertiary tint">Baixar todas as fotos</ion-button>
-    <ion-button expand="block" class="button" color="tertiary" fill="outline">Mudar senha</ion-button>
-    <ion-button expand="block" class="button" color="danger" fill="outline" [routerLink]="['/']" routerLinkActive="router-link-active" >Sair</ion-button>
+    <ion-button expand="block" class="button" color="tertiary tint" (click)="alertConfirmDownload()">Baixar todas as fotos</ion-button>
+    <ion-button expand="block" class="button" color="tertiary" fill="outline" (click)="alertPassword()">Mudar senha</ion-button>
+    <ion-button expand="block" class="button" color="danger" fill="outline" (click)="alertConfirmLogout()" routerLinkActive="router-link-active" >Sair</ion-button>
 </ion-content>

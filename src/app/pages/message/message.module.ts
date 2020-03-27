@@ -9,6 +9,7 @@ import { MessagePageRoutingModule } from './message-routing.module';
 import { MessagePage } from './message.page';
 import { HeaderModule } from 'src/app/components/header/header.module';
 import { CardMessageModule } from 'src/app/components/card-message/card-message.module';
+import { ModalViewMessageComponent } from 'src/app/components/modal-view-message/modal-view-message.component';
 
 @NgModule({
   imports: [
@@ -20,6 +21,7 @@ import { CardMessageModule } from 'src/app/components/card-message/card-message.
     HeaderModule,
     CardMessageModule
   ],
-  declarations: [MessagePage]
+  declarations: [MessagePage, ModalViewMessageComponent],
+  entryComponents: [ModalViewMessageComponent]
 })
 export class MessagePageModule {}

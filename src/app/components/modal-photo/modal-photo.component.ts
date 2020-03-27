@@ -60,7 +60,6 @@ export class ModalPhotoComponent implements OnInit {
         }
       ]
     });
-
-    await alert.present();
   }
+    
 }
