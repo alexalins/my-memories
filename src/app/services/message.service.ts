@@ -47,7 +47,8 @@ export class MessageService {
   private async toast(message: string) {
     const toast = await this.toastController.create({
       message: message,
-      duration: 2000
+      duration: 2000,
+      position: "top"
     });
     toast.present();
   }
