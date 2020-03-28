@@ -10,16 +10,7 @@
 </ion-header>
 <ion-content fullscreen>
 
-  <ion-button expand="block" class="button" color="primary" *ngIf="!isImage" fill="outline" (click)="peckImage()">
-    <ion-row>
-      <ion-col width-90>Camera</ion-col>
-      <ion-col width-10>
-        <ion-icon name="camera-outline"></ion-icon>
-      </ion-col>
-    </ion-row>
-  </ion-button>
-
-  <ion-button expand="block" class="button" color="primary" *ngIf="!isImage" fill="outline" (click)="peckImage()">
+  <ion-button expand="block" class="button" color="primary" fill="outline" (click)="selectImage()">
     <ion-row>
       <ion-col width-90>Buscar Imagem</ion-col>
       <ion-col width-10>
