@@ -10,6 +10,7 @@ import { PhotoPage } from './photo.page';
 import { HeaderModule } from 'src/app/components/header/header.module';
 import { CardPhotoModule } from 'src/app/components/card-photo/card-photo.module';
 import { ModalPhotoComponent } from 'src/app/components/modal-photo/modal-photo.component';
+import { ModalSendPhotoComponent } from 'src/app/components/modal-send-photo/modal-send-photo.component';
 
 @NgModule({
   imports: [
@@ -21,7 +22,7 @@ import { ModalPhotoComponent } from 'src/app/components/modal-photo/modal-photo.
     HeaderModule,
     CardPhotoModule,
   ],
-  declarations: [PhotoPage, ModalPhotoComponent],
-  entryComponents: [ModalPhotoComponent]
+  declarations: [PhotoPage, ModalPhotoComponent, ModalSendPhotoComponent],
+  entryComponents: [ModalPhotoComponent, ModalSendPhotoComponent]
 })
 export class PhotoPageModule {}

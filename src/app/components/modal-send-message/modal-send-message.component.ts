@@ -10,7 +10,7 @@ import { User } from 'src/app/models/User';
   styleUrls: ['./modal-send-message.component.scss'],
 })
 export class ModalSendMessageComponent implements OnInit {
-
+  
   message: Message = new Message();
 
   constructor(

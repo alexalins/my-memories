@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { ModalPhotoComponent } from 'src/app/components/modal-photo/modal-photo.component';
+import { ModalSendPhotoComponent } from 'src/app/components/modal-send-photo/modal-send-photo.component';
 
 @Component({
   selector: 'app-photo',
@@ -19,6 +20,13 @@ export class PhotoPage implements OnInit {
   async modalPhoto() {
     const modal = await this.modalController.create({
       component: ModalPhotoComponent
+    });
+    return await modal.present();
+  }
+
+  async modalSendPhoto() {
+    const modal = await this.modalController.create({
+      component: ModalSendPhotoComponent
     });
     return await modal.present();
   }
