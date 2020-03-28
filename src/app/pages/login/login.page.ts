@@ -17,8 +17,8 @@ export class LoginPage implements OnInit {
 
   constructor(
     private alertController: AlertController,
-    private loginService: LoginService  
-  ) { }
+    private loginService: LoginService
+  ) {}
 
   ngOnInit() {
   }
