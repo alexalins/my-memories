@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
+import { MessageService } from 'src/app/services/message.service';
+import { Message } from 'src/app/models/Message';
+import { User } from 'src/app/models/User';
 
 @Component({
   selector: 'app-modal-send-message',
@@ -8,13 +11,50 @@ import { ModalController } from '@ionic/angular';
 })
 export class ModalSendMessageComponent implements OnInit {
 
-  constructor(private modalController: ModalController) { }
+  message: Message = new Message();
+  messages: Message[] = [];
 
-  ngOnInit() {}
+  constructor(
+    private modalController: ModalController,
+    private messageService: MessageService
+  ) { }
+
+  ngOnInit() {
+    this.getAll();
+   }
+
+  sendMessage() {
+    let user: User = new User();
+    user = JSON.parse(localStorage.getItem('user'));
+    this.message.user = user;
+    this.message.date = this.getDate();
+    //
+    this.messageService.newMessage(this.message);
+  }
+
+  async getAll() {
+    await this.messageService.getAllMessage();
+    this.messages = this.messageService.list;
+    console.log(this.message);
+  }
+
+  getDate() {
+    let date = new Date();
+    let day = date.getDate().toString();
+    let month = (date.getMonth() + 1).toString();
+    let year = date.getFullYear().toString();
+
+    if (day.length == 1)
+      day = '0' + day;
+    if (month.length == 1)
+      month = '0' + month;
+
+    let dateFormart = day + '/' + month + '/' + year;
+    return dateFormart;
+  }
 
   dismissModal() {
     this.modalController.dismiss();
   }
-
 
 }

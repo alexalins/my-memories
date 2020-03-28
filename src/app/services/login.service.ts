@@ -4,7 +4,6 @@ import { User } from '../models/User';
 import { ToastController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { AngularFireDatabase } from '@angular/fire/database';
-import { map } from "rxjs/operators";
 
 @Injectable({
   providedIn: 'root'
@@ -69,6 +68,7 @@ export class LoginService {
   logout() {
     this.firebaseauth.auth.signOut()
       .then(() => {
+        localStorage.removeItem('user');
         this.toast('Você saiu');
       })
       .catch((erro: any) => {

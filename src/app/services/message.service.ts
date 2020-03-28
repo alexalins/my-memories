@@ -3,29 +3,38 @@ import { AngularFirestoreCollection, DocumentReference } from 'angularfire2/fire
 import { map, take } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { Message } from '../models/Message';
-import { User } from '../models/User';
 import { AngularFireDatabase } from '@angular/fire/database';
+import { User } from '../models/User';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MessageService {
 
-  private messages: Observable<User[]>;
-  private messageCollection: AngularFirestoreCollection<User>;
+  list: User[] = [];
+  constructor(private db: AngularFireDatabase) { }
 
-  constructor(private db: AngularFireDatabase) {
+  newMessage(message: Message) {
+    return new Promise((resolve) => {
+      this.db.list('message')
+        .push(message)
+        .then(() => resolve());
+    })
   }
 
-  newUser() {
-    let user: User = new User();
-    user.email = "marianafelix615@gmail.com";
-    user.name = "Mariana Valença";
-    return new Promise((resolve, reject) => {
-      this.db.list('user')
-      .push(user)
-      .then(() => resolve());
-    })
+  getAllMessage() {
+    this.db.database.ref('message')
+      .on('value', tasksnap => {
+        let tmp: User[] = [];
+        tasksnap.forEach(taskData => {
+          console.log(taskData)
+          tmp.push({
+            key: taskData.key,
+            ...taskData.val()
+          })
+        });
+        this.list = tmp;
+      })
   }
 
 }
