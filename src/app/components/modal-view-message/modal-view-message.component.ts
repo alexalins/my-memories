@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ModalController, AlertController } from '@ionic/angular';
+import { ModalController, AlertController, NavParams } from '@ionic/angular';
+import { MessageService } from 'src/app/services/message.service';
 
 @Component({
   selector: 'app-modal-view-message',
@@ -9,12 +10,18 @@ import { ModalController, AlertController } from '@ionic/angular';
 export class ModalViewMessageComponent implements OnInit {
 
   urlAvatar: string = "https://66.media.tumblr.com/avatar_4f38df4a83b6_128.pnj";
+  message: any;
 
   constructor(
     private modalController: ModalController,
-    private alertController: AlertController) { }
+    private alertController: AlertController,
+    private navParams: NavParams,
+    private messageService: MessageService
+  ) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.message = this.navParams.data;
+  }
 
   dismissModal() {
     this.modalController.dismiss();
@@ -34,7 +41,8 @@ export class ModalViewMessageComponent implements OnInit {
         }, {
           text: 'Okay',
           handler: () => {
-            console.log('apagando');
+            this.messageService.delete(this.message['key']);
+            this.dismissModal();
           }
         }
       ]

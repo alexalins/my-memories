@@ -2,7 +2,10 @@
   <ion-toolbar>
     <ion-title>Detalhe</ion-title>
     <ion-buttons slot="end">
-      <ion-button (click)="dismissModal()"><ion-icon name="close-outline"></ion-icon></ion-button>    </ion-buttons>
+      <ion-button (click)="dismissModal()">
+        <ion-icon name="close-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 <ion-content fullscreen>
@@ -11,12 +14,11 @@
       <img [src]="urlAvatar">
     </ion-avatar>
     <ion-label>
-      <h2>Alexa</h2>
-      <p>26/03/2020</p>
+      <h2>{{message.user.name}}</h2>
+      <p>{{message.date}}</p>
     </ion-label>
-  </ion-item>   
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras efficitur tempus condimentum. Sed ultrices nisi id sodales convallis. Curabitur venenatis lectus a massa scelerisque accumsan sed ac ex. Donec volutpat elementum diam, in dapibus nulla dictum et. Suspendisse a consectetur nulla.</p>
-
+  </ion-item>
+  <p>{{message.message}}</p>
   <ion-button expand="block" class="buttonApagar" color="danger" (click)="alertConfirmDelete()">
     <ion-row>
       <ion-col width-90>Apagar</ion-col>

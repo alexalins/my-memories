@@ -48,6 +48,7 @@ export class LoginService {
             user.id = l['key'];
             user.name = l['name'];
             user.email = l['email'];
+            user.photo = l['photo'];
             let json = JSON.stringify(user);
             localStorage.setItem('user', json);
           }

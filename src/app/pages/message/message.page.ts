@@ -11,9 +11,9 @@ import { Message } from 'src/app/models/Message';
   templateUrl: './message.page.html',
   styleUrls: ['./message.page.scss'],
 })
+
 export class MessagePage implements OnInit {
 
-  list: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
   messages: Message[] = [];
   
   constructor(
@@ -25,8 +25,6 @@ export class MessagePage implements OnInit {
     this.getAll();
   }
 
-  
-
   getAll() {
     let messages: Observable<any>;
     messages = this.messageService.getAllMessage();
@@ -35,9 +33,10 @@ export class MessagePage implements OnInit {
     })
   }
 
-  async modalView() {
+  async modalView(message: Message) {
     const modal = await this.modalController.create({
-      component: ModalViewMessageComponent
+      component: ModalViewMessageComponent,
+      componentProps: message
     });
     return await modal.present();
   }
