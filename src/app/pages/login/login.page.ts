@@ -32,7 +32,7 @@ export class LoginPage implements OnInit {
       header: 'Insira seu email',
       inputs: [
         {
-          name: 'Email',
+          name: 'email',
           type: 'email',
           placeholder: 'Email'
         }
@@ -47,8 +47,8 @@ export class LoginPage implements OnInit {
           }
         }, {
           text: 'Enviar',
-          handler: () => {
-            console.log('Confirm Ok');
+          handler: (data) => {
+            this.loginService.newPassword(data.email);
           }
         }
       ]

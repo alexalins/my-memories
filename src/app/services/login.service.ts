@@ -13,13 +13,33 @@ export class LoginService {
     private firebaseauth: AngularFireAuth,
     private toastController: ToastController,
     private router: Router,
-  ) {}
+  ) { }
 
   login(user: User) {
     this.firebaseauth.auth.signInWithEmailAndPassword(user.email, user.password)
       .then(() => {
         this.toast('Login efetuado com sucesso');
         this.router.navigate(['/tabs/photo']);
+      })
+      .catch((erro: any) => {
+        this.toast(erro);
+      });
+  }
+
+  newPassword(email: string) {
+    this.firebaseauth.auth.sendPasswordResetEmail(email)
+      .then(() => {
+        this.toast('E-mail enviado');
+      })
+      .catch((erro: any) => {
+        this.toast(erro);
+      });
+  }
+
+  logout() {
+    this.firebaseauth.auth.signOut()
+      .then(() => {
+        this.toast('Você saiu');
       })
       .catch((erro: any) => {
         this.toast(erro);
