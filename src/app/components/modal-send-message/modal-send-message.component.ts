@@ -27,6 +27,7 @@ export class ModalSendMessageComponent implements OnInit {
     this.message.date = this.getDate();
     //
     this.messageService.newMessage(this.message);
+    this.dismissModal();
   }
 
   getDate() {
