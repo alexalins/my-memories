@@ -3,14 +3,14 @@
   <form style="margin-top: 15%;">
     <ion-item>
       <ion-label>E-mail</ion-label>
-      <ion-input type="email" name="email"></ion-input>
+      <ion-input type="email" name="email" [(ngModel)]="user.email"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label>Senha</ion-label>
-      <ion-input type="password" name="password"></ion-input>
+      <ion-input type="password" name="password" [(ngModel)]="user.password"></ion-input>
     </ion-item>
     <div class="ion-text-center" style="margin-top: 15%;">
-      <ion-button expand="block" class="button" color="tertiary tint" [routerLink]="['/tabs/photo']">
+      <ion-button expand="block" class="button" color="tertiary tint" (click)="login()">
         <ion-row>
           <ion-col width-90>Iniciar Sessão</ion-col>
           <ion-col width-10>

@@ -1,18 +1,30 @@
 import { Component, OnInit } from '@angular/core';
 import { AlertController } from '@ionic/angular';
+import { User } from 'src/app/models/User';
+import { LoginService } from 'src/app/services/login.service';
+import { AngularFireAuth } from 'angularfire2/auth';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
+  providers:[AngularFireAuth]
 })
 export class LoginPage implements OnInit {
 
   img: string = "./assets/image/camera.jpg";
+  user: User = new User();
 
-  constructor(public alertController: AlertController) { }
+  constructor(
+    private alertController: AlertController,
+    private loginService: LoginService  
+  ) { }
 
   ngOnInit() {
+  }
+
+  login() {
+    this.loginService.login(this.user);
   }
 
   async alertPassword() {
