@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { ModalPhotoComponent } from 'src/app/components/modal-photo/modal-photo.component';
 import { ModalController, AlertController } from '@ionic/angular';
 import { ModalViewMessageComponent } from 'src/app/components/modal-view-message/modal-view-message.component';
 import { ModalSendMessageComponent } from 'src/app/components/modal-send-message/modal-send-message.component';
+import { MessageService } from 'src/app/services/message.service';
+import { Observable } from 'rxjs';
+import { Message } from 'src/app/models/Message';
 
 @Component({
   selector: 'app-message',
@@ -12,13 +14,25 @@ import { ModalSendMessageComponent } from 'src/app/components/modal-send-message
 export class MessagePage implements OnInit {
 
   list: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+  messages: Message[] = [];
   
   constructor(
-    public modalController: ModalController,
-    public alertController: AlertController
+    private modalController: ModalController,
+    private messageService: MessageService
   ) { }
 
   ngOnInit() {
+    this.getAll();
+  }
+
+  
+
+  getAll() {
+    let messages: Observable<any>;
+    messages = this.messageService.getAllMessage();
+    messages.subscribe(data =>{
+      this.messages = data;
+    })
   }
 
   async modalView() {

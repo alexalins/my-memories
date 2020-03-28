@@ -1,8 +1,8 @@
 <header title="Mensagens"></header>
 
 <ion-content>
-    <ion-list *ngFor="let item of list">
-        <app-card-message (click)="modalView()"></app-card-message>
+    <ion-list *ngFor="let item of messages">
+        <app-card-message (click)="modalView()" [message]="item"></app-card-message>
     </ion-list>
 
     <!-- fab bottom end -->

@@ -12,16 +12,13 @@ import { User } from 'src/app/models/User';
 export class ModalSendMessageComponent implements OnInit {
 
   message: Message = new Message();
-  messages: Message[] = [];
 
   constructor(
     private modalController: ModalController,
     private messageService: MessageService
   ) { }
 
-  ngOnInit() {
-    this.getAll();
-   }
+  ngOnInit() {}
 
   sendMessage() {
     let user: User = new User();
@@ -30,12 +27,6 @@ export class ModalSendMessageComponent implements OnInit {
     this.message.date = this.getDate();
     //
     this.messageService.newMessage(this.message);
-  }
-
-  async getAll() {
-    await this.messageService.getAllMessage();
-    this.messages = this.messageService.list;
-    console.log(this.message);
   }
 
   getDate() {

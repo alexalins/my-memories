@@ -1,7 +1,7 @@
 import { User } from './User';
 
 export class Message {
-    id ?: string;
+    key ?: string;
     user ?: User;
     message ?: string;
     date ?: string;

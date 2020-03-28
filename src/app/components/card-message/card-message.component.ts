@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Message } from 'src/app/models/Message';
 
 @Component({
   selector: 'app-card-message',
@@ -8,6 +9,9 @@ import { Component, OnInit } from '@angular/core';
 export class CardMessageComponent implements OnInit {
 
   urlAvatar: string = "https://66.media.tumblr.com/avatar_4f38df4a83b6_128.pnj";
+
+  @Input() message: Message = new Message;
+
   constructor() { }
 
   ngOnInit() {}

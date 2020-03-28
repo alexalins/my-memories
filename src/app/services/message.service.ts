@@ -1,40 +1,39 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestoreCollection, DocumentReference } from 'angularfire2/firestore';
-import { map, take } from 'rxjs/operators';
-import { Observable } from 'rxjs';
 import { Message } from '../models/Message';
 import { AngularFireDatabase } from '@angular/fire/database';
-import { User } from '../models/User';
+import { map } from 'rxjs/operators';
+
+const path = 'message';
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class MessageService {
 
-  list: User[] = [];
   constructor(private db: AngularFireDatabase) { }
 
   newMessage(message: Message) {
     return new Promise((resolve) => {
-      this.db.list('message')
+      this.db.list(path)
         .push(message)
         .then(() => resolve());
     })
   }
 
   getAllMessage() {
-    this.db.database.ref('message')
-      .on('value', tasksnap => {
-        let tmp: User[] = [];
-        tasksnap.forEach(taskData => {
-          console.log(taskData)
-          tmp.push({
-            key: taskData.key,
-            ...taskData.val()
-          })
-        });
-        this.list = tmp;
-      })
+    return this.db.list(path)
+      .snapshotChanges()
+      .pipe(
+        map(changes => {
+          return changes.map(c => ({ key: c.payload.key, ...(c.payload.val() as Message) }));
+        }
+        )
+      );
+  }
+
+  delete(id: string) {
+    this.db.object(`${path}/${id}`).remove();
   }
 
 }
