@@ -30,6 +30,7 @@ export class MessagePage implements OnInit {
     messages = this.messageService.getAllMessage();
     messages.subscribe(data =>{
       this.messages = data;
+      this.messages = this.messages.reverse();
     })
   }
 
