@@ -8,8 +8,7 @@ import { MessageService } from 'src/app/services/message.service';
   styleUrls: ['./modal-view-message.component.scss'],
 })
 export class ModalViewMessageComponent implements OnInit {
-
-  urlAvatar: string = "https://66.media.tumblr.com/avatar_4f38df4a83b6_128.pnj";
+  
   message: any;
 
   constructor(

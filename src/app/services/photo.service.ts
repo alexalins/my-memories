@@ -44,8 +44,9 @@ export class PhotoService {
       );
   }
 
-  deletePhoto(key: string) {
-    this.db.object(`${path}/${key}`).remove();
+  deletePhoto(photo: Photo) {
+    this.db.object(`${path}/${photo.key}`).remove();
+    this.storage.storage.refFromURL(photo.url).delete();
     this.toast('Foto apagada');
   }
 

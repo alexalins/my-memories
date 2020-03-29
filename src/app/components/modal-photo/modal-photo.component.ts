@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController, AlertController, NavParams } from '@ionic/angular';
+import { PhotoService } from 'src/app/services/photo.service';
 
 @Component({
   selector: 'app-modal-photo',
@@ -13,7 +14,8 @@ export class ModalPhotoComponent implements OnInit {
   constructor(
     private modalController: ModalController,
     private alertController: AlertController,
-    private navParams: NavParams
+    private navParams: NavParams,
+    private photoService: PhotoService
   ) { }
 
   ngOnInit() {
@@ -25,6 +27,8 @@ export class ModalPhotoComponent implements OnInit {
   }
 
   async alertConfirmDonwload() {
+    alert("Ainda não estou funcionando");
+    /*
     const alert = await this.alertController.create({
       header: 'Deseja baixar essa foto?',
       buttons: [
@@ -45,6 +49,7 @@ export class ModalPhotoComponent implements OnInit {
     });
 
     await alert.present();
+    */
   }
 
   async alertConfirmDelete() {
@@ -55,17 +60,18 @@ export class ModalPhotoComponent implements OnInit {
           text: 'Cancelar',
           role: 'cancel',
           cssClass: 'secondary',
-          handler: (blah) => {
-            console.log('Confirm Cancel: blah');
+          handler: () => {
           }
         }, {
           text: 'Okay',
           handler: () => {
-            console.log('apagando');
+            this.photoService.deletePhoto(this.photo);
+            this.dismissModal();
           }
         }
       ]
     });
-  }
 
+    await alert.present();
+  }
 }
