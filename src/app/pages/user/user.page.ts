@@ -32,7 +32,6 @@ export class UserPage implements OnInit {
           role: 'cancel',
           cssClass: 'secondary',
           handler: (blah) => {
-            console.log('Confirm Cancel: blah');
           }
         }, {
           text: 'Okay',
@@ -84,12 +83,10 @@ export class UserPage implements OnInit {
           role: 'cancel',
           cssClass: 'secondary',
           handler: () => {
-            console.log('Confirm Cancel');
           }
         }, {
           text: 'Enviar',
           handler: () => {
-            console.log('Confirm Ok');
           }
         }
       ]

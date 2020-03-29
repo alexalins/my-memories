@@ -12,6 +12,6 @@ export class CardMessageComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {console.log(this.message.user)}
+  ngOnInit() {this.message.user}
 
 }

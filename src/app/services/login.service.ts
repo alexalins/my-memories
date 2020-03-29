@@ -35,7 +35,6 @@ export class LoginService {
       .on('value', tasksnap => {
         let tmp = [];
         tasksnap.forEach(taskData => {
-          console.log(taskData)
             tmp.push({
                 key: taskData.key,
                 ...taskData.val()

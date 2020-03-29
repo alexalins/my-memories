@@ -62,7 +62,6 @@ export class PhotoService {
       const ref = this.storage.ref(`images/${newName}`);
       const task = ref.putString(photoUrl, 'data_url').snapshotChanges().toPromise().then(_ => {
         return ref.getDownloadURL().toPromise().then(res => {
-          alert(res);
           this.downloadUrl = res;
           this.newPhoto(photo);
           return res;
