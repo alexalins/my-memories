@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AlertController } from '@ionic/angular';
 import { Router } from '@angular/router';
+import { PhotoService } from 'src/app/services/photo.service';
+import { User } from 'src/app/models/User';
 
 @Component({
   selector: 'app-user',
@@ -9,44 +11,16 @@ import { Router } from '@angular/router';
 })
 export class UserPage implements OnInit {
   
-  urlAvatar: string = "https://66.media.tumblr.com/avatar_4f38df4a83b6_128.pnj";
+  user: User = new User();
 
   constructor(
     private alertController: AlertController,
-    private router: Router) { }
+    private router: Router,
+    private photoService: PhotoService
+  ) { }
 
   ngOnInit() {
-  }
-
-  
-  async alertPassword() {
-    const alert = await this.alertController.create({
-      header: 'Insira a nova senha',
-      inputs: [
-        {
-          name: 'Senha',
-          type: 'password',
-          placeholder: 'senha'
-        }
-      ],
-      buttons: [
-        {
-          text: 'Cancelar',
-          role: 'cancel',
-          cssClass: 'secondary',
-          handler: () => {
-            console.log('Confirm Cancel');
-          }
-        }, {
-          text: 'Enviar',
-          handler: () => {
-            console.log('Confirm Ok');
-          }
-        }
-      ]
-    });
-
-    await alert.present();
+    this.user = JSON.parse(localStorage.getItem('user'));
   }
 
   async alertConfirmLogout() {
@@ -80,13 +54,42 @@ export class UserPage implements OnInit {
           text: 'Cancelar',
           role: 'cancel',
           cssClass: 'secondary',
-          handler: (blah) => {
-            console.log('Confirm Cancel: blah');
+          handler: () => {
           }
         }, {
           text: 'Okay',
           handler: () => {
-            console.log('baixando');
+            this.photoService.downloadAllPhotos();
+          }
+        }
+      ]
+    });
+
+    await alert.present();
+  }
+
+  async alertPassword() {
+    const alert = await this.alertController.create({
+      header: 'Insira a nova senha',
+      inputs: [
+        {
+          name: 'Senha',
+          type: 'password',
+          placeholder: 'senha'
+        }
+      ],
+      buttons: [
+        {
+          text: 'Cancelar',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: () => {
+            console.log('Confirm Cancel');
+          }
+        }, {
+          text: 'Enviar',
+          handler: () => {
+            console.log('Confirm Ok');
           }
         }
       ]

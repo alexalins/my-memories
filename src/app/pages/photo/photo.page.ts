@@ -29,6 +29,7 @@ export class PhotoPage implements OnInit {
     messages = this.photoService.getAllPhoto();
     messages.subscribe(data =>{
       this.photos = data;
+      this.photos = this.photos.reverse();
     })
   }
 

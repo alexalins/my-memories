@@ -27,8 +27,6 @@ export class ModalPhotoComponent implements OnInit {
   }
 
   async alertConfirmDonwload() {
-    alert("Ainda não estou funcionando");
-    /*
     const alert = await this.alertController.create({
       header: 'Deseja baixar essa foto?',
       buttons: [
@@ -42,14 +40,13 @@ export class ModalPhotoComponent implements OnInit {
         }, {
           text: 'Okay',
           handler: () => {
-            console.log('baixando');
+            this.photoService.downloadPhoto(this.photo);
           }
         }
       ]
     });
 
     await alert.present();
-    */
   }
 
   async alertConfirmDelete() {

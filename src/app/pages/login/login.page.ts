@@ -3,6 +3,7 @@ import { AlertController } from '@ionic/angular';
 import { User } from 'src/app/models/User';
 import { LoginService } from 'src/app/services/login.service';
 import { AngularFireAuth } from 'angularfire2/auth';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -17,10 +18,14 @@ export class LoginPage implements OnInit {
 
   constructor(
     private alertController: AlertController,
-    private loginService: LoginService
+    private loginService: LoginService,
+    private router: Router
   ) {}
 
   ngOnInit() {
+    if(localStorage.getItem('user')){
+      this.router.navigate(['/tabs/photo']);
+    }
   }
 
   login() {

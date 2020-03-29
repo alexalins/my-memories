@@ -19,7 +19,7 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
 
 import { Camera } from '@ionic-native/camera/ngx';
 import { File } from '@ionic-native/file/ngx';
-
+import { FileTransfer, FileTransferObject } from '@ionic-native/file-transfer/ngx';
 
 
 @NgModule({
@@ -39,6 +39,8 @@ import { File } from '@ionic-native/file/ngx';
     SplashScreen,
     Camera,
     File,
+    FileTransfer,
+    FileTransferObject,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     { provide: FirestoreSettingsToken, useValue: {} }
   ],

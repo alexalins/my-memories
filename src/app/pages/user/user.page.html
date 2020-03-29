@@ -3,11 +3,11 @@
 <ion-content>
     <ion-item style="margin-top: 15%;">
         <ion-avatar slot="start">
-            <img [src]="urlAvatar">
+            <img [src]="user.photo" >
         </ion-avatar>
         <ion-label>
-            <h2>Alexa</h2>
-            <p>alexa.glinsoo@gmail.com</p>
+            <h2>{{user.name}}</h2>
+            <p>{{user.email}}</p>
         </ion-label>
     </ion-item>
     <ion-button expand="block" class="button" color="tertiary tint" (click)="alertConfirmDownload()">
