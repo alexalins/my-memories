@@ -1,9 +1,9 @@
 <header title="Fotos"></header>
 
 <ion-content>
-    <ion-list *ngFor="let item of list">
+    <ion-list *ngFor="let item of photos">
         <ion-item>
-            <app-card-photo (click)="modalPhoto()"></app-card-photo>
+            <app-card-photo (click)="modalPhoto()" [photo]="item"></app-card-photo>
         </ion-item>
     </ion-list>
 

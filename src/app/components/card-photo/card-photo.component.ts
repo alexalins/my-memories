@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Photo } from 'src/app/models/Photo';
 
 @Component({
   selector: 'app-card-photo',
@@ -6,9 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./card-photo.component.scss'],
 })
 export class CardPhotoComponent implements OnInit {
-
-  urlAvatar: string = "https://66.media.tumblr.com/avatar_4f38df4a83b6_128.pnj";
-  img: string = "./assets/image/camera.jpg";
+  
+  @Input() photo: Photo = new Photo();
 
   constructor() { }
 

@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ModalController, ActionSheetController } from '@ionic/angular';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 import { File } from '@ionic-native/file/ngx';
+import { PhotoService } from 'src/app/services/photo.service';
+import { Photo } from 'src/app/models/Photo';
+import { User } from 'src/app/models/User';
 
 @Component({
   selector: 'app-modal-send-photo',
@@ -11,19 +14,19 @@ import { File } from '@ionic-native/file/ngx';
 export class ModalSendPhotoComponent implements OnInit {
 
   isImage: boolean = false;
-  capturedSnapURL: string;
-
- 
+  photoUrl: string;
+  photo: Photo = new Photo();
 
   constructor(
     private modalController: ModalController,
     private camera: Camera,
-    public actionSheetController: ActionSheetController
+    private actionSheetController: ActionSheetController,
+    private photoService: PhotoService
   ) { }
 
   ngOnInit() { }
 
-  pickImage(sourceType) {
+  async pickImage(sourceType) {
 
     let cameraOptions: CameraOptions = {
       sourceType: sourceType,
@@ -33,14 +36,37 @@ export class ModalSendPhotoComponent implements OnInit {
       mediaType: this.camera.MediaType.PICTURE
     }
 
-    this.camera.getPicture(cameraOptions).then((imageData) => {
-      let base64Image = 'data:image/jpeg;base64,' + imageData;
-      this.capturedSnapURL = base64Image;
+    try {
+      const result = await this.camera.getPicture(cameraOptions);
+      this.photoUrl = `data:image/jpeg;base64,${result}`;
       this.isImage = true;
-    }, (err) => {
-      console.log(err);
-    });
-    
+    } catch (error) {
+      alert(error['error']);
+    }
+  }
+
+  async sendImage() {
+    this.photo.date = this.getDate();
+    let user: User = new User();
+    user = JSON.parse(localStorage.getItem('user'));
+    this.photo.user = user;
+    await this.photoService.uploadPicture(this.photoUrl, this.photo);
+    this.dismissModal();
+  }
+
+  getDate() {
+    let date = new Date();
+    let day = date.getDate().toString();
+    let month = (date.getMonth() + 1).toString();
+    let year = date.getFullYear().toString();
+
+    if (day.length == 1)
+      day = '0' + day;
+    if (month.length == 1)
+      month = '0' + month;
+
+    let dateFormart = day + '/' + month + '/' + year;
+    return dateFormart;
   }
 
   async selectImage() {

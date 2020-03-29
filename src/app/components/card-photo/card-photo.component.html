@@ -1,14 +1,14 @@
 <ion-card>
-  <img [src]="img" />
+  <img [src]="photo.url"/>
   <ion-card-header>
-    <ion-card-subtitle>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras efficitur tempus condimentum. Sed ultrices nisi id sodales convallis. Curabitur venenatis lectus a massa scelerisque accumsan sed ac ex. Donec volutpat elementum diam, in dapibus nulla dictum et. Suspendisse a consectetur nulla.</ion-card-subtitle>
+    <ion-card-subtitle>{{photo.description}}</ion-card-subtitle>
   </ion-card-header>
   <ion-card-content>
     <ion-item>
       <ion-avatar slot="end">
-        <img [src]="urlAvatar">
+        <img [src]="photo.user.photo">
       </ion-avatar>
-      <ion-label>26/03/2020</ion-label>
+      <ion-label>{{photo.date}}</ion-label>
     </ion-item>
   </ion-card-content>
 </ion-card>

@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { ModalPhotoComponent } from 'src/app/components/modal-photo/modal-photo.component';
 import { ModalSendPhotoComponent } from 'src/app/components/modal-send-photo/modal-send-photo.component';
+import { Photo } from 'src/app/models/Photo';
+import { Observable } from 'rxjs';
+import { PhotoService } from 'src/app/services/photo.service';
 
 @Component({
   selector: 'app-photo',
@@ -10,11 +13,23 @@ import { ModalSendPhotoComponent } from 'src/app/components/modal-send-photo/mod
 })
 export class PhotoPage implements OnInit {
 
-  list: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+  photos: Photo[] = [];
 
-  constructor(public modalController: ModalController) { }
+  constructor(
+    private modalController: ModalController,
+    private photoService: PhotoService
+  ) { }
 
   ngOnInit() {
+    this.getAll();
+  }
+
+  getAll() {
+    let messages: Observable<any>;
+    messages = this.photoService.getAllPhoto();
+    messages.subscribe(data =>{
+      this.photos = data;
+    })
   }
 
   async modalPhoto() {

@@ -5,6 +5,7 @@ export class Photo {
     url ?: string;
     user ?: User;
     date ?: string;
+    description ?: string
 
     constructor() {}
 }
