@@ -32,9 +32,10 @@ export class PhotoPage implements OnInit {
     })
   }
 
-  async modalPhoto() {
+  async modalPhoto(photo: Photo) {
     const modal = await this.modalController.create({
-      component: ModalPhotoComponent
+      component: ModalPhotoComponent,
+      componentProps: photo
     });
     return await modal.present();
   }

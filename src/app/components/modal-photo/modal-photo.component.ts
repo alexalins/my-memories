@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ModalController, AlertController } from '@ionic/angular';
+import { ModalController, AlertController, NavParams } from '@ionic/angular';
 
 @Component({
   selector: 'app-modal-photo',
@@ -8,11 +8,17 @@ import { ModalController, AlertController } from '@ionic/angular';
 })
 export class ModalPhotoComponent implements OnInit {
 
+  photo: any;
+
   constructor(
     private modalController: ModalController,
-    private alertController: AlertController) { }
+    private alertController: AlertController,
+    private navParams: NavParams
+  ) { }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.photo = this.navParams.data;
+  }
 
   dismissModal() {
     this.modalController.dismiss();
@@ -40,7 +46,7 @@ export class ModalPhotoComponent implements OnInit {
 
     await alert.present();
   }
-  
+
   async alertConfirmDelete() {
     const alert = await this.alertController.create({
       header: 'Deseja apagar essa foto?',
@@ -61,5 +67,5 @@ export class ModalPhotoComponent implements OnInit {
       ]
     });
   }
-    
+
 }
