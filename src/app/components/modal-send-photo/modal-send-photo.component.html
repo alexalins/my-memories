@@ -18,13 +18,8 @@
       </ion-col>
     </ion-row>
   </ion-button>
-  
-  <ion-card>
-    <ion-card-header>
-      <img [src]="photoUrl" *ngIf="isImage">
-    </ion-card-header>
-  </ion-card>
-  
+
+  <img [src]="photoUrl" *ngIf="isImage">
 
   <ion-item *ngIf="isImage">
     <ion-label position="stacked">Legenda</ion-label>
